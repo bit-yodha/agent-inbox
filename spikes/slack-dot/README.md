@@ -1,0 +1,7 @@
+# Dot Slack spike — internal only
+
+Prerequisite: existing owner-authorized Dot Slack connection, separate approved Agent Inbox development Slack app, legitimate user token with minimal required scopes. Obtain credentials locally and securely; never paste tokens into chat, commit them or include them in screenshots. The CLI does not perform OAuth/PKCE. Verify installation class/rate limits before use; bundled CLI's polling cadence is only for eligible internal installations, not restricted public apps.
+
+Node.js 20+; run `node dot-slack-poc.mjs list` with `SLACK_USER_TOKEN` injected through your local secret mechanism. Confirm the correct workspace, DM and peer manually. Do not list or disclose unrelated metadata externally. With explicit consent, run `node dot-slack-poc.mjs test D_CHANNEL EXPECTED_AGENT_USER_ID`. This sends one harmless nonce prompt. A timeout or read error is inconclusive; do not rerun the send until you have reconciled whether it was accepted. Review the script first and use only a dedicated/approved conversation. It performs no production refresh, robust cursor recovery, or mobile auth. Some providers may return messages with a different documented identity/thread representation; validate rather than relaxing checks blindly.
+
+Evidence: redact IDs and messages, record owner/workspace verification, accepted receipt, agent identity and matching nonce, follow-up, errors and actual outcome. No live execution is included in the package.
