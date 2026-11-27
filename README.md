@@ -34,6 +34,7 @@ The repository holds the specification, the roadmap, a clickable design prototyp
 | [`docs/screens/`](docs/screens/) | Functional specification for each screen (S01–S07) and the hosted connection setup states, mapped to the prototype frames. |
 | [`docs/architecture/`](docs/architecture/) | Technical design: system overview, adapter contracts, data model, request lifecycle and sync, errors, optional bridge, and per-provider contracts. Its `README.md` maps each `Product.md` section to its file. |
 | [`docs/security/`](docs/security/) | Threat model, privacy and networking rules. |
+| [`Quickstart.md`](Quickstart.md) | Command reference: install, run, lint/typecheck/test, Android emulator, the Gate 0A Slack spike and the design prototype. |
 | [`Roadmap.md`](Roadmap.md) | The official gate plan (Gates 0A, 0B, 1–6), exit criteria and provider status. |
 | [`AGENTS.md`](AGENTS.md) | The single instruction file for coding agents and contributors: architecture rules, security rules, evidence requirements. `CLAUDE.md` only imports it. |
 | [`docs/adr/`](docs/adr/) | Architecture decision records (template only for now). |

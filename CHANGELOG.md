@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Gate 1 foundation scaffold: Expo SDK 58 app from the `default` template with Expo Router (routes in `src/app/`), strict TypeScript, ESLint (`eslint-config-expo`) and Jest (`jest-expo`, React Native Testing Library). The template's demo screens and assets are removed; a placeholder home screen states that no agents are connected. Gate 0A remains open, and no agent or provider UI is included.
 - Layered `src/` and `tests/` folders from `docs/architecture/system-overview.md` (§7.3, §24.11), each with a README describing its responsibility.
 - npm scripts `lint`, `typecheck` and `test`, with a smoke test for the home screen.
+- `Quickstart.md`: command reference for setup, running the app, checks, the Android emulator, the Gate 0A Slack spike and the design prototype.
 - `.github/workflows/ci.yml`: lint, typecheck and tests, TruffleHog secret scan and `npm audit` on pull requests and pushes to `main`; dependency review once the repository is public. Pull request template and bug/feature issue forms.
 - `docs/architecture/` with the technical design moved verbatim out of `Product.md`: system overview, adapter contracts, data model, request lifecycle and sync, errors and observability, optional event bridge, and per-provider contracts for Hermes, Nod, Slack and Gmail. `docs/architecture/README.md` maps each `Product.md` section to its file.
 - `docs/security/threat-model-and-privacy.md` (former `Product.md` §12).
