@@ -66,11 +66,15 @@ jobs:
       - name: Audit installed dependencies (high and critical)
         run: npm audit --audit-level=high
 
-      # Dependency review needs a public repository (or GitHub Advanced Security on a private one).
-      # It turns on automatically when this repository is made public.
+      # Dependency review needs a public repository (or GitHub Advanced Security on a private one)
+      # and the repository's dependency graph enabled.
+      # License exemptions (keep this list short and justified):
+      # - node-forge: dual-licensed "BSD-3-Clause OR GPL-2.0"; used under BSD-3-Clause, pulled in by @expo/cli tooling.
+      # - trufflehog: AGPL-3.0 CI action that runs in the workflow only; it is never shipped in or linked into the app.
       - name: Review dependency changes
         if: github.event_name == 'pull_request' && github.event.repository.private == false
         uses: actions/dependency-review-action@v5
         with:
           fail-on-severity: high
           deny-licenses: GPL-2.0, GPL-3.0, AGPL-3.0
+          allow-dependencies-licenses: pkg:npm/node-forge, pkg:githubactions/trufflesecurity/trufflehog
