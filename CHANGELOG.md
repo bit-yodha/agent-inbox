@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Gate 1 foundation scaffold: Expo SDK 58 app from the `default` template with Expo Router (routes in `src/app/`), strict TypeScript, ESLint (`eslint-config-expo`) and Jest (`jest-expo`, React Native Testing Library). The template's demo screens and assets are removed; a placeholder home screen states that no agents are connected. Gate 0A remains open, and no agent or provider UI is included.
+- Layered `src/` and `tests/` folders from `docs/architecture/system-overview.md` (§7.3, §24.11), each with a README describing its responsibility.
+- npm scripts `lint`, `typecheck` and `test`, with a smoke test for the home screen.
+- `Quickstart.md`: command reference for setup, running the app, checks, the Android emulator, the Gate 0A Slack spike and the design prototype.
+- `.github/workflows/ci.yml`: lint, typecheck and tests, TruffleHog secret scan and `npm audit` on pull requests and pushes to `main`; dependency review once the repository is public. Pull request template and bug/feature issue forms.
 - `docs/architecture/` with the technical design moved verbatim out of `Product.md`: system overview, adapter contracts, data model, request lifecycle and sync, errors and observability, optional event bridge, and per-provider contracts for Hermes, Nod, Slack and Gmail. `docs/architecture/README.md` maps each `Product.md` section to its file.
 - `docs/security/threat-model-and-privacy.md` (former `Product.md` §12).
 - `docs/product/`, `docs/hosted-agents/`, `docs/delivery/`, `docs/design/design-system.md`, `docs/testing/testing-strategy.md` and `docs/screens/hosted-connection-setup.md`, holding every remaining `Product.md` section moved verbatim. `Product.md` is now an index: each numbered heading links to its document, and a folder table at the top maps folders to sections.
@@ -16,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `docs/testing/acceptance-tests.md` with the acceptance tests C01–C16 and evidence template moved verbatim out of `Product.md` §24.12, plus a gate mapping derived from `Roadmap.md`.
 - `CLAUDE.md`, which only imports `AGENTS.md`.
 - `AGENTS.md` sections for current state and commands, document conventions and an architecture map.
+- `Quickstart.md` with project setup, Expo/quality scripts (`start`, `android`, `ios`, `web`, `typecheck`, `lint`, `test`), Android/Orca emulator commands, Gate 0A Slack spike commands, and UI prototype launch commands.
 
 ### Changed
 

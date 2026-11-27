@@ -18,9 +18,9 @@ An agent is enabled in the app only after its real two-way test passes. See the 
 
 ## Project status
 
-**Planning and technical discovery. No app code exists yet.**
+**Technical discovery, with the app foundation scaffolded.**
 
-The repository currently holds the specification, the roadmap, a clickable design prototype and one internal test script. No live provider test has run. No OAuth app, store listing or security review exists yet. Work starts at **Gate 0A**: proving that a message sent through the Slack API reaches the owner's existing ChatGPT Dot and that Dot's reply can be read back.
+The repository holds the specification, the roadmap, a clickable design prototype, one internal test script and the Expo app foundation (SDK 58, Expo Router, strict TypeScript, lint and tests in CI). The app shows a single placeholder screen; no agent can be connected yet. No live provider test has run. No OAuth app, store listing or security review exists yet. Work starts at **Gate 0A**: proving that a message sent through the Slack API reaches the owner's existing ChatGPT Dot and that Dot's reply can be read back.
 
 ## Documents
 
@@ -34,6 +34,7 @@ The repository currently holds the specification, the roadmap, a clickable desig
 | [`docs/screens/`](docs/screens/) | Functional specification for each screen (S01–S07) and the hosted connection setup states, mapped to the prototype frames. |
 | [`docs/architecture/`](docs/architecture/) | Technical design: system overview, adapter contracts, data model, request lifecycle and sync, errors, optional bridge, and per-provider contracts. Its `README.md` maps each `Product.md` section to its file. |
 | [`docs/security/`](docs/security/) | Threat model, privacy and networking rules. |
+| [`Quickstart.md`](Quickstart.md) | Command reference: install, run, lint/typecheck/test, Android emulator, the Gate 0A Slack spike and the design prototype. |
 | [`Roadmap.md`](Roadmap.md) | The official gate plan (Gates 0A, 0B, 1–6), exit criteria and provider status. |
 | [`AGENTS.md`](AGENTS.md) | The single instruction file for coding agents and contributors: architecture rules, security rules, evidence requirements. `CLAUDE.md` only imports it. |
 | [`docs/adr/`](docs/adr/) | Architecture decision records (template only for now). |
@@ -49,9 +50,21 @@ Open `docs/design/agent-inbox-ui.html` in a browser to click through the 20-scre
 
 All data and connection results in the prototype are simulated. It was drawn against spec v0.2, so it doesn't yet show the newer OAuth, account-binding, verification and reauthorization screens from `docs/screens/hosted-connection-setup.md` (§24.3).
 
-## Planned stack
+## Stack
 
-React Native with Expo, Expo Router and strict TypeScript. SQLite holds local history and sync state, and SecureStore holds credentials. The app needs no mandatory backend, app account, push notifications or billing. The phone talks directly to your agent or to the account you authorize. See `Product.md` §7 and §24.
+React Native with Expo (SDK 58), Expo Router and strict TypeScript. Planned: SQLite holds local history and sync state, and SecureStore holds credentials. The app needs no mandatory backend, app account, push notifications or billing. The phone talks directly to your agent or to the account you authorize. See `Product.md` §7 and §24.
+
+## Development
+
+Requires Node.js 20 or later (CI uses Node 24) and npm.
+
+```sh
+npm install
+npm start            # Expo dev server; npm run android / ios / web
+npm run lint
+npm run typecheck
+npm test
+```
 
 ## Privacy and security principles
 

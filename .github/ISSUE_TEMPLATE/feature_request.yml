@@ -1,0 +1,28 @@
+name: Feature request
+description: Propose a change or a new capability.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What you are trying to do, and why it is hard today.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: The behavior you would like. Link the relevant spec section (Product.md §…) or screen (S01–S07) if one applies.
+    validations:
+      required: true
+  - type: input
+    id: gate
+    attributes:
+      label: Roadmap gate
+      description: Which gate this belongs to, if known (0A, 0B, 1–6).
+  - type: textarea
+    id: provider-support
+    attributes:
+      label: Provider support
+      description: For agent integrations, link the official documentation that supports this. Unsupported or unofficial routes cannot be accepted.

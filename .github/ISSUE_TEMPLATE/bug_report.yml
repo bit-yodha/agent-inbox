@@ -1,0 +1,48 @@
+name: Bug report
+description: Something in Agent Inbox does not behave as documented.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Never paste tokens, passwords, private messages, email contents or full account IDs. Redact them first.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you saw, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. ...
+        2. ...
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent or area
+      options:
+        - Hermes
+        - Nod
+        - ChatGPT Dot
+        - Grok Bot
+        - Meta Muse
+        - App (settings, theme, navigation)
+        - Not agent-specific
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Device, OS and app version
+      placeholder: e.g. Pixel 8, Android 16, 0.1.0
+  - type: textarea
+    id: logs
+    attributes:
+      label: Redacted logs or screenshots
+      description: Optional. Redact secrets and personal data before attaching.
