@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Read the project documentation first
+    url: https://github.com/bit-yodha/agent-inbox/blob/main/Product.md
+    about: The specification index, with links to every product, screen and architecture document.
