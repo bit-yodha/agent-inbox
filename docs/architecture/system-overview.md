@@ -50,16 +50,18 @@ There is no company-operated API gateway, central database, remote agent schedul
 
 ```text
 agent-inbox/
-├── app/                       # Expo Router routes and layouts
-│   ├── _layout.tsx
-│   ├── index.tsx
-│   ├── add-agent.tsx
-│   ├── agents/[agentId]/
-│   │   ├── index.tsx
-│   │   ├── settings.tsx
-│   │   └── chat/[threadId].tsx
-│   └── settings.tsx
+├── .github/                   # CI workflow, PR and issue templates
+├── assets/                    # App icon, adaptive icon, splash, favicon
 ├── src/
+│   ├── app/                   # Expo Router routes and layouts (Expo SDK 58 default location)
+│   │   ├── _layout.tsx
+│   │   ├── index.tsx
+│   │   ├── add-agent.tsx
+│   │   ├── agents/[agentId]/
+│   │   │   ├── index.tsx
+│   │   │   ├── settings.tsx
+│   │   │   └── chat/[threadId].tsx
+│   │   └── settings.tsx
 │   ├── domain/                # Models, states, errors, capabilities
 │   ├── application/           # Use cases and services
 │   ├── adapters/              # Grouped by transport (see §24.11)
@@ -74,6 +76,7 @@ agent-inbox/
 │   │   └── networking/        # HTTPS policy, abort and errors
 │   ├── features/              # Screen-specific UI and hooks
 │   ├── components/            # Reusable accessible components
+│   ├── hooks/                 # Shared React hooks (color scheme, theme)
 │   └── theme/
 ├── tests/{unit,integration,fixtures,e2e}/
 ├── docs/
@@ -93,13 +96,15 @@ agent-inbox/
 ├── Product.md
 ├── Roadmap.md
 ├── CHANGELOG.md
-├── app.config.ts
-├── eas.json
+├── app.json                   # Expo config (app.config.ts if dynamic config is needed)
+├── eas.json                   # Added with EAS builds (Gate 5)
+├── eslint.config.js
+├── tsconfig.json
 ├── package.json
 └── README.md
 ```
 
-Adapters are grouped by transport, not by provider: the same Slack or Gmail client serves several agent adapters without mixing bindings or histories (§24.6). The file-level breakdown in §24.11 extends this tree. Dependency direction: UI → application → domain contracts; infrastructure and providers implement those contracts. No direct credential access from screen components. Start with statically registered trusted adapters, not arbitrary downloaded executable plugins.
+Routes live in `src/app/`, the Expo SDK 58 default; the routes listed under it are planned, and only `_layout.tsx` and `index.tsx` exist after the Gate 1 scaffold. Adapters are grouped by transport, not by provider: the same Slack or Gmail client serves several agent adapters without mixing bindings or histories (§24.6). The file-level breakdown in §24.11 extends this tree. Dependency direction: UI → application → domain contracts; infrastructure and providers implement those contracts. No direct credential access from screen components. Start with statically registered trusted adapters, not arbitrary downloaded executable plugins.
 
 ## 23.2 Transport architecture (proposed)
 

@@ -18,9 +18,21 @@ If requirements conflict, prioritize safety and official supported provider beha
 This is the canonical instruction file for coding agents and contributors. `CLAUDE.md` exists only so Claude Code loads these instructions; it imports this file and must not contain rules of its own. Do not add other parallel instruction files (`agent.md` and similar); put new rules here.
 
 ## Current state and commands
-Planning and technical discovery only. There is no app code, no `package.json`, and no build, lint or test command yet. The Expo/TypeScript scaffold, CI (lint, strict typecheck, tests) and their commands arrive in Roadmap Gate 1. Add the real commands to this section once they exist; don't guess them before then.
+Gate 1 foundation scaffold: Expo SDK 58, Expo Router (routes in `src/app/`), strict TypeScript, ESLint (`eslint-config-expo`) and Jest (`jest-expo` + React Native Testing Library). The app shows a single placeholder home screen; no agent, provider or hosted-agent UI exists yet, and Gate 0A is still open. Layer folders under `src/` and `tests/` each have a README stating what belongs there. Use npm (Node 24 in CI, `engines` >= 20).
 
-The only runnable code is the Gate 0A Slack spike (Node.js 20+, no dependencies):
+```sh
+npm install                 # install dependencies (CI uses npm ci)
+npm start                   # Expo dev server; npm run android / ios / web
+npm run lint                # expo lint (ESLint)
+npm run typecheck           # tsc --noEmit (strict)
+npm test                    # Jest; tests live in tests/**/*.test.ts(x)
+npx jest tests/unit/home-screen.test.tsx    # one test file
+npx jest -t "renders the product name"      # tests matching a name
+```
+
+CI (`.github/workflows/ci.yml`) runs lint, typecheck and tests, a TruffleHog secret scan and `npm audit --audit-level=high` on every pull request and push to `main`. GitHub dependency review runs only once the repository is public. Add packages with `npx expo install <pkg>` so versions match the SDK, and move test-only packages to `devDependencies`. Import app code through the `@/` alias (maps to `src/`); `tsconfig.json` lists `expo/types` and `jest` in `types` because TypeScript 6 no longer loads all `@types` by default.
+
+The Gate 0A Slack spike is separate (Node.js 20+, no dependencies):
 
 ```sh
 # Lists the token owner, workspace and IM channel/peer IDs only. Sends nothing.

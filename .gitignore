@@ -1,13 +1,40 @@
-# Local secrets and generated artifacts
+# Local secrets and credentials
 .env
 .env.*
 !.env.example
 *.pem
 *.key
+*.p8
 *.p12
+*.jks
 *.keystore
+*.mobileprovision
+
+# Dependencies
 node_modules/
+
+# Expo
 .expo/
 dist/
+web-build/
+expo-env.d.ts
+
+# Generated native folders (continuous native generation)
+/ios
+/android
+.kotlin/
+*.orig.*
+
+# Metro
+.metro-health-check*
+
+# Test and build output
 coverage/
+*.tsbuildinfo
+
+# Logs
 *.log
+npm-debug.*
+
+# OS
+.DS_Store
